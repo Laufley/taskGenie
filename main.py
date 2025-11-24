@@ -1,4 +1,5 @@
-# el menu de la app, el punto de entrada de la app
+# el menu de la app, el punto de entrada de la app pk tiene la funcion main()
+from task_manager import TaskManager
 
 def print_menu():
     print("\n--- Task Genie, your smart task manager ---")
@@ -10,6 +11,8 @@ def print_menu():
 
 def main():
 
+    manager = TaskManager()
+
     while True:
 
         print_menu()
@@ -18,7 +21,8 @@ def main():
 
         match choice:
             case "1":
-                pass
+                description = input("Describe la tarea: ")
+                manager.add_task(description)
             case "2":
                 pass
             case "3":
