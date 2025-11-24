@@ -1,15 +1,18 @@
 # el menu de la app, el punto de entrada de la app
 
+def print_menu():
+    print("\n--- Task Genie, your smart task manager ---")
+    print("1. Add task")
+    print("2. List tasks")
+    print("3. Complete task")
+    print("4. Delete task")
+    print("5. Exit")
+
 def main():
 
     while True:
 
-        print("\n--- Task Genie, your smart task manager ---")
-        print("1. Add task")
-        print("2. List tasks")
-        print("3. Complete task")
-        print("4. Delete task")
-        print("5. Exit")
+        print_menu()
 
         choice = input("choose an option: ")
 
