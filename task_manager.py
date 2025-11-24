@@ -6,11 +6,11 @@ class Task:
         self.completed = completed
 
 
- #__str__: metodo magico/dunder method k Py usa para decidir k texto mostrar cuando convertimos un objeto to str. Por ejemplo, en print stattements.
- # Lo voy a re-definit para k muestre unos campos concretos
-def __str__(self):
-    status =  "✔" if self.completed else " "
-    return f"[{status} #{self.id}: {self.description}]"
+    #__str__: metodo magico/dunder method k Py usa para decidir k texto mostrar cuando convertimos un objeto to str. Por ejemplo, en print stattements.
+    # Lo voy a re-definit para k muestre unos campos concretos
+    def __str__(self):
+        status =  "✔" if self.completed else " "
+        return f"[{status} #{self.id}: {self.description}]"
 
 
 # Clase para gestionar la lista de tareas. Se inicializa vacia.
@@ -27,7 +27,7 @@ class TaskManager:
         print(f"Added task: {description}")
     
     def list_tasks(self):
-        if  not self._tasks:
+        if not self._tasks:
             print("There are no pending tasks")
         else:
             for task in self._tasks:
