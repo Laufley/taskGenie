@@ -27,10 +27,29 @@ class TaskManager:
         print(f"Added task: {description}")
     
     def list_tasks(self):
-        pass
+        if  not self._tasks:
+            print("There are no pending tasks")
+        else:
+            for task in self._tasks:
+                print(task)
+            
+    def mark_complete_task(self, id):
+        for task in self._tasks:
+            if task.id == id:
+                task.completed = True
+                print(f"Task marked as completed: {task}")
+                return
+            else:
+                print(f"Task not found: #{id}")
 
-    def complete_task(self, id):
-        pass
+
 
     def delete_task(self, id):
-        pass
+        for task in self._tasks:
+            if task.id == id:
+                self._tasks.remove(task)
+                print(f"Task deleted: {task}")
+                return
+            else:
+                print(f"Task not found: #{id}")
+
