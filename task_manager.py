@@ -30,6 +30,7 @@ class TaskManager:
         self._tasks.append(task)
         self.next_id += 1
         print(f"Added task: {description}")
+        self.save_tasks()
     
     def list_tasks(self):
         if not self._tasks:
@@ -43,6 +44,7 @@ class TaskManager:
             if task.id == id:
                 task.completed = True
                 print(f"Task marked as completed: {task}")
+                self.save_tasks()
                 return
             else:
                 print(f"Task not found: #{id}")
@@ -54,6 +56,7 @@ class TaskManager:
             if task.id == id:
                 self._tasks.remove(task)
                 print(f"Task deleted: {task}")
+                self.save_tasks()
                 return
             else:
                 print(f"Task not found: #{id}")
@@ -72,8 +75,9 @@ class TaskManager:
             self._tasks = []
 
 
-    def save_tasks(self, id):
-        pass
+    def save_tasks(self):
+        with open(self.FILENAME, "w") as file:
+            json.dump([{"id": task.id, "description": task.description, "completed": task.completed} for task in self._tasks], file, indent = 4)
         
 
     
