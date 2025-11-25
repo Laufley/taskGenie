@@ -1,3 +1,5 @@
+import json
+
 class Task:
 
     def __init__(self, id, description, completed=False):
@@ -16,9 +18,12 @@ class Task:
 # Clase para gestionar la lista de tareas. Se inicializa vacia.
 class TaskManager:
 
+    FILENAME = "task.json"
+
     def __init__(self):
         self._tasks = [] #indico k es un atributo "privado" on el underscore. Es solo para marcar a otros devs k no lo accedan directamente
         self.next_id = 1
+        self.load_tasks()
 
     def add_task(self, description):
         task = Task(self.next_id, description)
@@ -53,3 +58,22 @@ class TaskManager:
             else:
                 print(f"Task not found: #{id}")
 
+    def load_tasks(self):
+        try:
+            with open(self.FILENAME, "r") as file:
+                data = json.load(file)
+                self._tasks = [Task(item["id"], item["description"], item["complete"]) for item in data]
+                if self._tasks:
+                    self.next_id = self._tasks[-1].id + 1
+                else:
+                    self.next_id = 1
+
+        except FileNotFoundError:
+            self._tasks = []
+
+
+    def save_tasks(self, id):
+        pass
+        
+
+    
