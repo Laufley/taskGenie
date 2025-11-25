@@ -17,25 +17,28 @@ def main():
 
         print_menu()
 
-        choice = input("choose an option: ")
+        try: 
+            choice = int(input("choose an option: "))
 
-        match choice:
-            case "1":
-                description = input("Describe la tarea: ")
-                manager.add_task(description)
-            case "2":
-                manager.list_tasks()
-            case "3":
-                id = input("ID of the task to complete: ")
-                manager.mark_complete_task(id)
-            case "4":
-                id = input("ID of the task to delete: ")
-                manager.delete_task(id)
-            case "5":
-                print("Leaving...")
-                break
-            case _:
-                print("Not a valid option. Please choose another")
+            match choice:
+                case 1:
+                    description = input("Describe la tarea: ")
+                    manager.add_task(description)
+                case 2:
+                    manager.list_tasks()
+                case 3:
+                    id = int(input("ID of the task to complete: "))
+                    manager.mark_complete_task(id)
+                case 4:
+                    id = int(input("ID of the task to delete: "))
+                    manager.delete_task(id)
+                case 5:
+                    print("Leaving...")
+                    break
+                case _:
+                    print("Not a valid option. Please choose another")
+        except ValueError:
+             print("Not a valid option. Option must be a number. Please choose another")
     
 
 # Definir el punto de partida del programa
