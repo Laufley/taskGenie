@@ -38,6 +38,13 @@ python main.py
 ```
 Follow the menu prompts to add, list, complete, or delete tasks.
 
+Example result 
+1. choose option: _"2. to add complex task with AI"_
+2. add input: "prepare hot chocolat mug"
+3. observe how taskGenie breaks it down into simpler steps on the purple box. :)
+
+![Task Genie Example](example_result.png)
+
 ## Dependencies
 Main dependencies (see `requirements.txt`):
 - openai
