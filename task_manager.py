@@ -46,8 +46,7 @@ class TaskManager:
                 print(f"Task marked as completed: {task}")
                 self.save_tasks()
                 return
-            else:
-                print(f"Task not found: #{id}")
+        print(f"Task not found: #{id}")
 
 
 
@@ -58,8 +57,8 @@ class TaskManager:
                 print(f"Task deleted: {task}")
                 self.save_tasks()
                 return
-            else:
-                print(f"Task not found: #{id}")
+        
+        print(f"Task not found: #{id}")
 
     def load_tasks(self):
         try:
